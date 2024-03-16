@@ -1,0 +1,25 @@
+.error-container {
+  text-align: center; /* Centrer le texte horizontalement */
+  font-family: 'Arial', sans-serif; /* Choisissez une police de caractères */
+  color: #333; /* Couleur de texte sombre */
+  margin-top: 50px; /* Ajoutez un peu d'espace en haut */
+}
+
+.error-container h1 {
+  font-size: 1.5em; /* Petite taille pour 'OOPS! PAGE NOT FOUND' */
+  text-transform: uppercase; /* Lettres majuscules */
+  letter-spacing: 3px; /* Espacement entre les lettres */
+  margin-bottom: 20px; /* Espace en dessous du h1 */
+}
+
+.error-container .error-code {
+  font-size: 5em; /* Grande taille pour '404' */
+  letter-spacing: 5px; /* Espacement entre les chiffres */
+  font-weight: bold; /* Mettre en gras */
+  margin: 20px 0; /* Espace au-dessus et en dessous */
+}
+
+.error-container p {
+  font-size: 1em; /* Taille standard pour le message d'erreur */
+  margin-bottom: 30px; /* Espace en dessous du paragraphe */
+}

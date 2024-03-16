@@ -1,0 +1,10 @@
+{
+  "codes_error_description": {
+    "404": "We are sorry, the resource you are looking for does not exist",
+    "500": "We are sorry, an error occurred, please try again later",
+    "503": "We are sorry, service is temporarly not available, please try again later",
+    "401": "We are sorry, you are not authorized to access this resource",
+    "403": "We are sorry, you are not authorized to access this resource",
+    "default": "We are sorry, an error occurred, please try again later"
+  }
+}

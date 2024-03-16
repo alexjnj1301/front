@@ -1,0 +1,10 @@
+{
+  "codes_error_description": {
+    "404": "Nous sommes désolé, la page que vous cherchez n'existe pas",
+    "500": "Nous sommes désolé, une erreur est survenue, veuillez réessayer plus tard",
+    "503": "Nous sommes désolé, le service est temporairement indisponible, veuillez réessayer plus tard",
+    "401": "Nous sommes désolé, vous n'êtes pas autorisé à accéder à cette ressource",
+    "403": "Nous sommes désolé, vous n'êtes pas autorisé à accéder à cette ressource",
+    "default": "Nous sommes désolé, une erreur est survenue, veuillez réessayer plus tard"
+  }
+}
