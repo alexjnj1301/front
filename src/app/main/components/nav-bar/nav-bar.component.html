@@ -1,0 +1,11 @@
+<mat-toolbar class="toolBar">
+  <div><img class="logo link" src="../../../../assets/IMG/logo.png" alt="Chez Toph's logo" routerLink="/home"/></div>
+  <div class="links">
+    <a class="link" href="" routerLink="/contact" matTooltip="{{translateValues.tooltips?.contact}}">{{translateValues.links?.contact}}</a>
+    <mat-icon class="link" matTooltip="{{translateValues.tooltips?.share}}">launch</mat-icon>
+    <button class="link" mat-button [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">{{currentLangDisplay.toUpperCase()}}</button>
+    <mat-menu #selector="matMenu">
+     <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang}}</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

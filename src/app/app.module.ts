@@ -9,7 +9,13 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
-
+import { NavBarComponent } from './main/components/nav-bar/nav-bar.component'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatMenuModule } from '@angular/material/menu'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -19,12 +25,19 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     AppComponent,
     HomePageComponent,
     ContactComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

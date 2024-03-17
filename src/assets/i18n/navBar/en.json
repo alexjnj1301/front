@@ -1,0 +1,16 @@
+{
+  "nav_bar": {
+    "links": {
+      "home": "Home",
+      "about": "About the apartment",
+      "contact": "Contact and booking"
+    },
+    "tooltips": {
+      "home": "Go to the home page",
+      "about": "Learn more about the apartment",
+      "contact": "Contact us and book your stay",
+      "share": "Share this page",
+      "lang": "Change language"
+    }
+  }
+}
