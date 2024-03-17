@@ -8,7 +8,8 @@ import { ErrorPageComponent } from './main/components/error-page/error-page.comp
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
-import { CookieService } from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service';
+import { NavBarComponent } from './main/components/nav-bar/nav-bar.component'
 
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
@@ -19,7 +20,8 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     AppComponent,
     HomePageComponent,
     ContactComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
