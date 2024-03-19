@@ -25,7 +25,6 @@ export class ErrorPageComponent implements OnInit {
     const errorKey = this.route.snapshot.paramMap.get('errorKey');
     this.translateService.getTranslation().subscribe((result) => {
       this.translateValues = result.codes_error_description
-      console.log(this.translateValues)
     })
 
     if (errorKey && this.isErrorKey(errorKey)) {

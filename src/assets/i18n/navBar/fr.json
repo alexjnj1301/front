@@ -1,0 +1,16 @@
+{
+  "nav_bar": {
+    "links": {
+      "home": "Accueil",
+      "about": "A propos de l'apartement",
+      "contact": "Contact et réservation"
+    },
+    "tooltips": {
+      "home": "Retour à l'accueil",
+      "about": "En savoir plus sur l'appartement",
+      "contact": "Contactez-nous pour réserver",
+      "share": "Partager",
+      "lang": "Changer de langue"
+    }
+  }
+}
