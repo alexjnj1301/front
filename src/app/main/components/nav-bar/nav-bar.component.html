@@ -1,11 +1,19 @@
 <mat-toolbar class="toolBar">
-  <div><img class="logo link" src="../../../../assets/IMG/logo.png" alt="Chez Toph's logo" routerLink="/home"/></div>
+  <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}"><img class="logo" src="../../../../assets/IMG/logo4.png" alt="Chez Toph's logo"/>ChezToph</div>
   <div class="links">
-    <a class="link" href="" routerLink="/contact" matTooltip="{{translateValues.tooltips?.contact}}">{{translateValues.links?.contact}}</a>
-    <mat-icon class="link" matTooltip="{{translateValues.tooltips?.share}}">launch</mat-icon>
-    <button class="link" mat-button [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">{{currentLangDisplay.toUpperCase()}}</button>
-    <mat-menu #selector="matMenu">
-     <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang}}</button>
-    </mat-menu>
+    <a class="link" href="" routerLink="/home" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.home}}"><strong>{{translateValues.links?.home}}</strong></a>
+    <a class="link" href="" routerLink="/contact" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.contact}}"><strong>{{translateValues.links?.contact}}</strong></a>
+    <button class="shareButton">
+      <mat-icon matTooltip="{{translateValues.tooltips?.share}}" style="margin: 0;">launch</mat-icon>
+    </button>
+    <div class="langSelector">
+      <button style="color: var(--primary-color);" class="langSelectorButton"
+        [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">
+        {{currentLangDisplay.toUpperCase()}}
+      </button>
+      <mat-menu #selector="matMenu">
+        <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang.toUpperCase()}}</button>
+      </mat-menu>
+    </div>
   </div>
 </mat-toolbar>
