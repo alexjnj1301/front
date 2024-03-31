@@ -1,11 +1,40 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-:root {
+:root{
   --primary-color: #e7f3fd;
   --secondary-color: #0335ff;
+  --tertiary-color: rgb(3,15,32);
+  --form-color: #f8fcff;
+  --white: #fff;
+  --black: #000;
+  --image-filter: rgba(28, 32, 34, 0.207);
+  --navBar-hover-color: #3e476b91;
+  --mat-datepicker-calendar-container-shape: 30px;
+  --mat-expansion-container-background-color: none;
+  --mat-select-panel-background-color: var(--form-color);
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none !important;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--primary-color);
 }
+
+.mat-calendar .mat-calendar-table-header-divider {
+  display: none !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -16,6 +16,21 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatMenuModule } from '@angular/material/menu'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { TitlePictureComponent } from './main/components/title-picture/title-picture.component'
+import { MatCardModule } from '@angular/material/card'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core'
+import { MatSelectModule } from '@angular/material/select'
+import { DatePipe } from '@angular/common'
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatTabsModule } from '@angular/material/tabs'
+import { BookFormComponent } from './main/components/contact/book-form/book-form.component'
+import { ContactFormComponent } from './main/components/contact/contact-form/contact-form.component'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -26,7 +41,10 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     HomePageComponent,
     ContactComponent,
     ErrorPageComponent,
-    NavBarComponent
+    NavBarComponent,
+    TitlePictureComponent,
+    BookFormComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +56,16 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     MatTooltipModule,
     MatMenuModule,
     BrowserAnimationsModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatTabsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -46,7 +74,17 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
       }
     })
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    provideNativeDateAdapter(),
+    DatePipe,
+    provideAnimationsAsync(),
+    {
+      provide: MAT_DATE_LOCALE,
+      deps: [CookieService],
+      useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

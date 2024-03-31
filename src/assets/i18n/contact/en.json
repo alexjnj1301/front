@@ -1,0 +1,34 @@
+{
+  "contact": {
+    "title": "Book your journey or contact us",
+    "card": {
+      "contactTitle": "Contact form",
+      "contactSubtitle": "If you have any questions, please feel free to contact us via the form below.",
+      "bookTitle": "Book your journey",
+      "bookSubtitle": "If you would like to book a journey, please fill out the form below.",
+      "labels": {
+        "fullName": "Full name",
+        "firstName": "First name",
+        "lastName": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message (10 characters minimum)",
+        "date": "Journey dates",
+        "dateHint": "You have to select the first saturday of your journey, it will automatically select a period of 7 days.\nFor any other request, please contact us via the contact form.",
+        "arrival": "Arrival",
+        "departure": "Departure",
+        "nbPersons": "Number of persons",
+        "attendees": "Attendees",
+        "attendeesSubtitle": "Please provide the full name of each attendee",
+        "submit": "Submit",
+        "book": "Book"
+      },
+      "tooltips": {
+        "submit": "Submit form",
+        "book": "Book your journey",
+        "datePicker": "Select your journey arrival date",
+        "nbPersons": "Select the number of persons"
+      }
+    }
+  }
+}
