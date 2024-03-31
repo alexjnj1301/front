@@ -1,17 +1,36 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
 .toolBar {
-  background-color: var(--primary-color);
+  background-color: var(--tertiary-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: auto;
+  width: 100vw;
 }
 
 .logo {
-  height: 7rem;
+  height: 3rem;
+  max-height: 100%;
+  margin: 0.3rem 0;
+}
+
+.logoDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--primary-color);
+  gap: 0.5rem;
+}
+.logoDiv:hover {
+  cursor: pointer;
+  background-color: var(--navBar-hover-color);
+  padding-right: 0.5rem;
+  transition: 100ms;
+  border-radius: 5rem;
 }
 
 .links {
@@ -22,12 +41,57 @@
 }
 
 .link {
-  color: black;
+  color: var(--primary-color);
   text-decoration: none;
-  margin: 0 1rem;
-  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
 }
 .link:hover {
-  color: var(--secondary-color);
   cursor: pointer;
+  background-color: var(--navBar-hover-color);
+  padding: 0 0.2rem;
+  transition: 100ms;
+  border-radius: 5rem;
+  scale: 1.1;
+}
+
+.shareButton {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: none;
+  margin: 0 1rem 0 0.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+.shareButton:hover {
+  padding: 0.1rem;
+  transition: 100ms;
+  border-radius: 5rem;
+  background-color: var(--navBar-hover-color);
+  scale: 1.1;
+}
+
+.langSelector {
+  border-left: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  align-items: center;
+}
+
+.langSelectorButton {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.active-link {
+  background-color: var(--navBar-hover-color);
+  padding: 0 0.2rem;
+  border-radius: 5rem;
+}
+
+mat-icon {
+  margin: 1rem;
 }

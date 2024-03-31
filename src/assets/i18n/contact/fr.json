@@ -1,0 +1,30 @@
+{
+  "contact": {
+    "title": "Réservez votre séjour ou contactez nous",
+    "card": {
+      "contactTitle": "Formulaire de contact",
+      "contactSubtitle": "Pour toute question ou demande d'information, n'hésitez pas à nous contacter via ce formulaire.",
+      "bookTitle": "Réservez votre séjour",
+      "bookSubtitle": "Pour réserver votre séjour, merci de remplir ce formulaire.",
+      "labels": {
+        "fullName": "Nom complet",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "Email",
+        "message": "Message (10 caractères minimum)",
+        "date": "Dates de séjour (7 jours maximum)",
+        "arrival": "Date d'arrivée",
+        "departure": "Date de départ",
+        "nbPersons": "Nombre de personnes",
+        "attendees": "Participants",
+        "attendeesSubtitle": "Pour chaque participant, merci de renseigner le prénom et le nom.",
+        "submit": "Envoyer"
+      },
+      "tooltips": {
+        "submit": "Envoyer le formulaire",
+        "datePicker": "Sélectionner les dates du séjour",
+        "nbPersons": "Sélectionner le nombre de personnes"
+      }
+    }
+  }
+}
