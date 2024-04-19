@@ -11,18 +11,22 @@
         "firstName": "First name",
         "lastName": "Name",
         "email": "Email",
+        "phone": "Phone",
         "message": "Message (10 characters minimum)",
-        "date": "Journey dates (7 days maximum)",
+        "date": "Journey dates",
+        "dateHint": "You have to select the first saturday of your journey, it will automatically select a period of 7 days.\nFor any other request, please contact us via the contact form.",
         "arrival": "Arrival",
         "departure": "Departure",
         "nbPersons": "Number of persons",
         "attendees": "Attendees",
         "attendeesSubtitle": "Please provide the full name of each attendee",
-        "submit": "Submit"
+        "submit": "Submit",
+        "book": "Book"
       },
       "tooltips": {
         "submit": "Submit form",
-        "datePicker": "Select your journey dates",
+        "book": "Book your journey",
+        "datePicker": "Select your journey arrival date",
         "nbPersons": "Select the number of persons"
       }
     }

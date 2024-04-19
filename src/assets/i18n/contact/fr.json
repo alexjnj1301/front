@@ -11,18 +11,22 @@
         "firstName": "Prénom",
         "lastName": "Nom",
         "email": "Email",
+        "phone": "Téléphone",
         "message": "Message (10 caractères minimum)",
-        "date": "Dates de séjour (7 jours maximum)",
+        "date": "Dates de séjour",
+        "dateHint": "Veuillez sélectionner le samedi d'arrivée pour votre séjour d'une semaine.\nPour toute dérogation veuillez nous contacter via le formulaire de contact.",
         "arrival": "Date d'arrivée",
         "departure": "Date de départ",
         "nbPersons": "Nombre de personnes",
         "attendees": "Participants",
         "attendeesSubtitle": "Pour chaque participant, merci de renseigner le prénom et le nom.",
-        "submit": "Envoyer"
+        "submit": "Envoyer",
+        "book": "Réserver"
       },
       "tooltips": {
         "submit": "Envoyer le formulaire",
-        "datePicker": "Sélectionner les dates du séjour",
+        "book": "Réserver le séjour",
+        "datePicker": "Sélectionner la première date du séjour",
         "nbPersons": "Sélectionner le nombre de personnes"
       }
     }

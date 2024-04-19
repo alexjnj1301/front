@@ -9,45 +9,31 @@
 @include mat.core();
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$ChezToph-primary: mat.define-palette(mat.$indigo-palette);
-$ChezToph-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$ChezToph-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$ChezToph-theme: mat.define-light-theme((
-  color: (
-    primary: $ChezToph-primary,
-    accent: $ChezToph-accent,
-    warn: $ChezToph-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($ChezToph-theme);
-
-:root {
+:root{
   --primary-color: #e7f3fd;
   --secondary-color: #0335ff;
   --tertiary-color: rgb(3,15,32);
+  --form-color: #f8fcff;
   --white: #fff;
   --black: #000;
   --image-filter: rgba(28, 32, 34, 0.207);
   --navBar-hover-color: #3e476b91;
+  --mat-datepicker-calendar-container-shape: 30px;
+  --mat-expansion-container-background-color: none;
+  --mat-select-panel-background-color: var(--form-color);
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none !important;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--primary-color);
+}
+
+.mat-calendar .mat-calendar-table-header-divider {
+  display: none !important;
 }
 
 html, body { height: 100%; }

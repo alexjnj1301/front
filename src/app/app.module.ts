@@ -27,6 +27,10 @@ import { MatSelectModule } from '@angular/material/select'
 import { DatePipe } from '@angular/common'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatTabsModule } from '@angular/material/tabs'
+import { BookFormComponent } from './main/components/contact/book-form/book-form.component'
+import { ContactFormComponent } from './main/components/contact/contact-form/contact-form.component'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -38,7 +42,9 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     ContactComponent,
     ErrorPageComponent,
     NavBarComponent,
-    TitlePictureComponent
+    TitlePictureComponent,
+    BookFormComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,8 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     MatDatepickerModule,
     MatSelectModule,
     MatExpansionModule,
+    MatProgressBarModule,
+    MatTabsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
 
-import { ErrorDetails } from '../../enums/errorsPages';
+import { ErrorDetails } from '../../../enums/errorsPages';
 
 @Component({
   selector: 'app-error-page',
