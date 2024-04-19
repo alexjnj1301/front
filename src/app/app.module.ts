@@ -31,6 +31,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatTabsModule } from '@angular/material/tabs'
 import { BookFormComponent } from './main/components/contact/book-form/book-form.component'
 import { ContactFormComponent } from './main/components/contact/contact-form/contact-form.component'
+import { AdminComponent } from './main/components/admin/admin.component'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -44,7 +45,8 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     NavBarComponent,
     TitlePictureComponent,
     BookFormComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
