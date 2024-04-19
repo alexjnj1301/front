@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { DateRange, MAT_DATE_RANGE_SELECTION_STRATEGY, MatDateRangeSelectionStrategy } from '@angular/material/datepicker';
 import * as moment from 'moment';
-import { HttpService } from 'src/app/main/services/http.service';
+import { HttpCallsService } from 'src/app/main/services/httpCalls.service';
 import { BookRequest } from 'src/app/models/ContactInformations';
 
 @Injectable()
@@ -56,7 +56,7 @@ export class BookFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private datePipe: DatePipe,
-    private httpService: HttpService
+    private httpService: HttpCallsService
     ) {
     this.bookForm = this.formBuilder.group({
       arrivalDate: ['', Validators.required],

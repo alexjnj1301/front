@@ -1,0 +1,11 @@
+.all_res_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Centre les cartes et gère l'espacement autour */
+  gap: 20px; /* Espace entre les cartes */
+}
+
+mat-card {
+  flex: 0 1 300px; /* Les cartes auront une base de 300px et peuvent grandir ou rétrécir si nécessaire */
+  /* Ajouter plus de styles si nécessaire, comme l'ombre, etc. */
+}
