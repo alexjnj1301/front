@@ -21,6 +21,9 @@
   --mat-datepicker-calendar-container-shape: 30px;
   --mat-expansion-container-background-color: none;
   --mat-select-panel-background-color: var(--form-color);
+  --canceled-or-rejected: #fd8989;
+  --accepted: rgb(126, 195, 141);
+  --pending: #ffbb8e;
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
@@ -38,3 +41,9 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-dialog-container,
+.mdc-dialog__surface {
+  border-radius: 15px !important;
+  width: 30rem !important;
+}
