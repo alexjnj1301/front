@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>T'es vraiment vraiment sur hein ?</h2>
+<mat-dialog-content>
+  <p>La suppression est définitive et irréversible.</p>
+  <p>Es-tu sûr de vouloir supprimer cette réservation ?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Non</button>
+  <button mat-button [mat-dialog-close]="true" (click)="delete()">Oui</button>
+</mat-dialog-actions>

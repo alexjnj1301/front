@@ -31,6 +31,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatTabsModule } from '@angular/material/tabs'
 import { BookFormComponent } from './main/components/contact/book-form/book-form.component'
 import { ContactFormComponent } from './main/components/contact/contact-form/contact-form.component'
+import { AdminComponent } from './main/components/admin/admin.component'
+import { DialogComponent } from './main/components/admin/dialog/dialog.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatChipsModule } from '@angular/material/chips'
+import { ValidDeletionDialogComponent } from './main/components/admin/valid-deletion-dialog/valid-deletion-dialog.component'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -44,7 +50,10 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     NavBarComponent,
     TitlePictureComponent,
     BookFormComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AdminComponent,
+    DialogComponent,
+    ValidDeletionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +75,9 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
     MatExpansionModule,
     MatProgressBarModule,
     MatTabsModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
