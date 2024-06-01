@@ -7,7 +7,7 @@ import { ContactComponent } from './main/components/contact/contact.component'
 import { ErrorPageComponent } from './main/components/error-page/error-page.component'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
-import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
 import { NavBarComponent } from './main/components/nav-bar/nav-bar.component'
 import { MatIconModule } from '@angular/material/icon'
@@ -24,7 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
-import { DatePipe } from '@angular/common'
+import {DatePipe, NgOptimizedImage} from '@angular/common'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
@@ -37,28 +37,28 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatChipsModule } from '@angular/material/chips'
 import { ValidDeletionDialogComponent } from './main/components/admin/valid-deletion-dialog/valid-deletion-dialog.component'
+import { LoaderComponent } from "./main/components/loader/loader.component"
+import {LoginComponent} from "./main/components/Authentication/login/login.component";
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    ContactComponent,
-    ErrorPageComponent,
-    NavBarComponent,
-    TitlePictureComponent,
-    BookFormComponent,
-    ContactFormComponent,
-    AdminComponent,
-    DialogComponent,
-    ValidDeletionDialogComponent
-  ],
-  imports: [
-    BrowserModule,
+@NgModule({ declarations: [
+        AppComponent,
+        HomePageComponent,
+        ContactComponent,
+        ErrorPageComponent,
+        NavBarComponent,
+        TitlePictureComponent,
+        BookFormComponent,
+        ContactFormComponent,
+        AdminComponent,
+        DialogComponent,
+        ValidDeletionDialogComponent,
+        LoginComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
@@ -84,19 +84,17 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })
-  ],
-  providers: [
-    CookieService,
-    provideNativeDateAdapter(),
-    DatePipe,
-    provideAnimationsAsync(),
-    {
-      provide: MAT_DATE_LOCALE,
-      deps: [CookieService],
-      useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
-    }
-  ],
-  bootstrap: [AppComponent]
-})
+    }),
+    LoaderComponent, NgOptimizedImage], providers: [
+        CookieService,
+        provideNativeDateAdapter(),
+        DatePipe,
+        provideAnimationsAsync(),
+        {
+            provide: MAT_DATE_LOCALE,
+            deps: [CookieService],
+            useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {}
