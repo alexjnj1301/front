@@ -26,4 +26,8 @@ export class HttpCallsService {
   public deleteReservation(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/reservations/${id}`);
   }
+
+  public getAllReservationsBeginDates(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/getbegindates`);
+  }
 }

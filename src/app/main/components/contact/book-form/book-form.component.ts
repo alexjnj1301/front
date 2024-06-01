@@ -12,14 +12,14 @@ export class FiveDayRangeSelectionStrategy<D> implements MatDateRangeSelectionSt
   constructor(private _dateAdapter: DateAdapter<D>) {}
 
   selectionFinished(date: D | null): DateRange<D> {
-    return this._createFiveDayRange(date);
+    return this._createSevenDayRange(date);
   }
 
   createPreview(activeDate: D | null): DateRange<D> {
-    return this._createFiveDayRange(activeDate);
+    return this._createSevenDayRange(activeDate);
   }
 
-  private _createFiveDayRange(date: D | null): DateRange<D> {
+  private _createSevenDayRange(date: D | null): DateRange<D> {
     if (date) {
       const start = this._dateAdapter.addCalendarDays(date, 0);
       const end = this._dateAdapter.addCalendarDays(date, 7);
@@ -43,21 +43,17 @@ export class FiveDayRangeSelectionStrategy<D> implements MatDateRangeSelectionSt
 export class BookFormComponent implements OnInit {
   @Input() public translateValues: any;
 
-  public isLoading = false
-  public bookForm: FormGroup
-  public minDate: Date
-  public maxDate: Date
-  public attendeesList = Array.from({ length: 0 })
-  public bookRequest: BookRequest | undefined
-  public myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    return day === 6;
-  };
+  public isLoading = false;
+  public bookForm: FormGroup;
+  public minDate: Date;
+  public maxDate: Date;
+  public attendeesList = Array.from({ length: 0 });
+  public bookRequest: BookRequest | undefined;
+  private excludedDates: Date[] = [];
 
   constructor(private formBuilder: FormBuilder,
-    private datePipe: DatePipe,
-    private httpService: HttpCallsService
-    ) {
+              private datePipe: DatePipe,
+              private httpService: HttpCallsService) {
     this.bookForm = this.formBuilder.group({
       arrivalDate: ['', Validators.required],
       departureDate: ['', Validators.required],
@@ -68,8 +64,16 @@ export class BookFormComponent implements OnInit {
       firstName: ['', Validators.required],
       attendees: this.formBuilder.array([])
     });
-    this.minDate = new Date()
-    this.maxDate = moment(this.minDate).add(1, 'years').toDate()
+    this.minDate = new Date();
+    this.maxDate = moment(this.minDate).add(1, 'years').toDate();
+  }
+
+  private normalizeDate(date: Date): Date {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  private dateEquals(d1: Date, d2: Date): boolean {
+    return d1.getTime() === d2.getTime();
   }
 
   ngOnInit(): void {
@@ -89,6 +93,7 @@ export class BookFormComponent implements OnInit {
       this.updateFirstAttendee();
     });
     this.updateAttendeesFormArray(this.nbAttendees);
+    this.loadExcludedDates();
   }
 
   private get startDate(): string | null {
@@ -179,4 +184,28 @@ export class BookFormComponent implements OnInit {
       })
     }
   }
+  public loadExcludedDates(): void {
+    this.isLoading = true;
+    this.httpService.getAllReservationsBeginDates().subscribe({
+      next: (date: string[]) => {
+        this.excludedDates = (date.map(d => new Date(d)).map(date => this.normalizeDate(date)));
+        console.log(this.excludedDates);
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
+  }
+
+  public myFilter = (d: Date | null): boolean => {
+    this.excludedDates.map(date => this.normalizeDate(date))
+    if (!d) return false;
+
+    const normalizedDate = this.normalizeDate(d);
+    const day = normalizedDate.getDay();
+
+    return day === 6 && !this.excludedDates.some(exDate => this.dateEquals(normalizedDate, exDate));
+  };
 }
