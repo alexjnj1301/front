@@ -7,7 +7,7 @@ import { ContactComponent } from './main/components/contact/contact.component'
 import { ErrorPageComponent } from './main/components/error-page/error-page.component'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
-import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
 import { NavBarComponent } from './main/components/nav-bar/nav-bar.component'
 import { MatIconModule } from '@angular/material/icon'
@@ -37,66 +37,62 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatChipsModule } from '@angular/material/chips'
 import { ValidDeletionDialogComponent } from './main/components/admin/valid-deletion-dialog/valid-deletion-dialog.component'
+import { LoaderComponent } from "./main/components/loader/loader.component"
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    ContactComponent,
-    ErrorPageComponent,
-    NavBarComponent,
-    TitlePictureComponent,
-    BookFormComponent,
-    ContactFormComponent,
-    AdminComponent,
-    DialogComponent,
-    ValidDeletionDialogComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatMenuModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatProgressBarModule,
-    MatTabsModule,
-    MatDialogModule,
-    MatProgressSpinnerModule,
-    MatChipsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
-  ],
-  providers: [
-    CookieService,
-    provideNativeDateAdapter(),
-    DatePipe,
-    provideAnimationsAsync(),
-    {
-      provide: MAT_DATE_LOCALE,
-      deps: [CookieService],
-      useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
-    }
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomePageComponent,
+        ContactComponent,
+        ErrorPageComponent,
+        NavBarComponent,
+        TitlePictureComponent,
+        BookFormComponent,
+        ContactFormComponent,
+        AdminComponent,
+        DialogComponent,
+        ValidDeletionDialogComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatMenuModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatProgressBarModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatProgressSpinnerModule,
+        MatChipsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        LoaderComponent], providers: [
+        CookieService,
+        provideNativeDateAdapter(),
+        DatePipe,
+        provideAnimationsAsync(),
+        {
+            provide: MAT_DATE_LOCALE,
+            deps: [CookieService],
+            useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {}

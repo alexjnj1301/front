@@ -6,6 +6,7 @@ import { DateRange, MAT_DATE_RANGE_SELECTION_STRATEGY, MatDateRangeSelectionStra
 import * as moment from 'moment';
 import { HttpCallsService } from 'src/app/main/services/httpCalls.service';
 import { BookRequest } from 'src/app/models/ContactInformations';
+import { AppComponent } from "../../../../app.component"
 
 @Injectable()
 export class FiveDayRangeSelectionStrategy<D> implements MatDateRangeSelectionStrategy<D> {
@@ -53,7 +54,8 @@ export class BookFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private datePipe: DatePipe,
-              private httpService: HttpCallsService) {
+              private httpService: HttpCallsService,
+              public appComponent: AppComponent) {
     this.bookForm = this.formBuilder.group({
       arrivalDate: ['', Validators.required],
       departureDate: ['', Validators.required],
@@ -77,6 +79,7 @@ export class BookFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.appComponent.setIsLoading(true)
     this.bookForm.get('arrivalDate')?.valueChanges.subscribe(value => {
       this.setDepartureDate(value);
     });
@@ -94,6 +97,7 @@ export class BookFormComponent implements OnInit {
     });
     this.updateAttendeesFormArray(this.nbAttendees);
     this.loadExcludedDates();
+    this.appComponent.setIsLoading(false)
   }
 
   private get startDate(): string | null {
@@ -161,6 +165,7 @@ export class BookFormComponent implements OnInit {
 
   public onBookSubmit(): void {
     this.isLoading = true
+    this.appComponent.setIsLoading(true)
     if (this.bookForm.valid) {
       this.bookRequest = {
         nom: this.bookForm.get('lastName')?.value,
@@ -176,16 +181,19 @@ export class BookFormComponent implements OnInit {
       this.httpService.postBookRequest(this.bookRequest).subscribe({
         next: () => {
           this.isLoading = false
+          this.appComponent.setIsLoading(false)
         },
         error: (error) => {
           console.error(error);
           this.isLoading = false
+          this.appComponent.setIsLoading(false)
         }
       })
     }
   }
   public loadExcludedDates(): void {
     this.isLoading = true;
+    this.appComponent.setIsLoading(true)
     this.httpService.getAllReservationsBeginDates().subscribe({
       next: (date: string[]) => {
         this.excludedDates = (date.map(d => new Date(d)).map(date => this.normalizeDate(date)));
@@ -195,6 +203,7 @@ export class BookFormComponent implements OnInit {
       error: (error) => {
         console.error(error);
         this.isLoading = false;
+        this.appComponent.setIsLoading(false)
       }
     });
   }
