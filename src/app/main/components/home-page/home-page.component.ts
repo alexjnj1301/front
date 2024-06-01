@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpCallsService } from '../../services/httpCalls.service';
 import { BookResponse } from 'src/app/models/ContactInformations';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
+import { AppComponent } from "../../../app.component"
 
 @Component({
   selector: 'app-home-page',
@@ -9,18 +10,18 @@ import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  public isLoading: boolean = false
   public homePageTranslateValues: any = {}
 
-  constructor(private translateValues: MultipleTransLoaderHttp) { }
+  constructor(private translateValues: MultipleTransLoaderHttp,
+              public appComponent: AppComponent) { }
 
   public ngOnInit(): void {
-    this.isLoading = true
+    this.appComponent.setIsLoading(true)
     this.translateValues.getTranslation().subscribe((result) => {
       this.homePageTranslateValues = result.homePage;
     })
     setTimeout(() => {
-      this.isLoading = false
+      this.appComponent.setIsLoading(false)
     }, 1000)
   }
 }
