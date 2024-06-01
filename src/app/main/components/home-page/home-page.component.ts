@@ -9,13 +9,18 @@ import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  public isLoading: boolean = false
   public homePageTranslateValues: any = {}
 
   constructor(private translateValues: MultipleTransLoaderHttp) { }
 
   public ngOnInit(): void {
+    this.isLoading = true
     this.translateValues.getTranslation().subscribe((result) => {
       this.homePageTranslateValues = result.homePage;
     })
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
   }
 }
