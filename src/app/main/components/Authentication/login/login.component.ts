@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.translateService.getTranslation().subscribe((result) => {
       this.translateValues = result.login;
-      console.log(this.translateValues);
     });
   }
 }

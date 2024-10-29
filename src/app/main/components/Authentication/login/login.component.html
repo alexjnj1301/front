@@ -1,14 +1,14 @@
 <div class="login-container">
-  <img class="login-logo" ngSrc="assets/IMG/locngo_removbg.png" alt="logo" height="125" width="365">
+  <img class="login-logo" src="assets/IMG/locngo_removbg.png" alt="logo">
   <p class="login-title">{{translateValues.title}}</p>
   <form [formGroup]="loginForm">
     <div class="custom-input-container">
       <div>
-        <label *ngIf="loginForm.get('email')?.valid" for="email">{{translateValues?.placeholder?.email}}</label>
+        <label [ngClass]="loginForm.get('email')?.valid ? 'label-active' : 'label-inactive'" for="email">{{translateValues?.placeholder?.email}}</label>
         <input id="email" type="email" formControlName="email" placeholder="{{translateValues?.placeholder?.email}}" class="custom-input">
       </div>
       <div>
-        <label *ngIf="loginForm.get('password')?.valid" for="password">{{translateValues?.placeholder?.password}}</label>
+        <label [ngClass]="loginForm.get('password')?.valid ? 'label-active' : 'label-inactive'" for="password">{{translateValues?.placeholder?.password}}</label>
         <input id="password" type="password" formControlName="password" placeholder="{{translateValues?.placeholder?.password}}" class="custom-input">
       </div>
     </div>
