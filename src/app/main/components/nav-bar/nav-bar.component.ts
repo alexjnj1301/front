@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +12,8 @@ export class NavBarComponent implements OnInit {
   langSelector: string[] = ['fr', 'en']
   currentLangDisplay: string
 
-  public constructor(private translateService: MultipleTransLoaderHttp) {
+  public constructor(private translateService: MultipleTransLoaderHttp,
+                     public router: Router) {
     this.currentLangDisplay = this.translateService.getLang();
   }
 
@@ -24,5 +26,9 @@ export class NavBarComponent implements OnInit {
   public changeLang(lang: string): void {
     this.translateService.setLang(lang);
     window.location.reload();
+  }
+
+  public isActiveRouteLogin(): boolean {
+    return this.router.url === '/login';
   }
 }

@@ -24,7 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
-import { DatePipe } from '@angular/common'
+import {DatePipe, NgOptimizedImage} from '@angular/common'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
@@ -38,6 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatChipsModule } from '@angular/material/chips'
 import { ValidDeletionDialogComponent } from './main/components/admin/valid-deletion-dialog/valid-deletion-dialog.component'
 import { LoaderComponent } from "./main/components/loader/loader.component"
+import {LoginComponent} from "./main/components/Authentication/login/login.component";
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -53,37 +54,38 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
         ContactFormComponent,
         AdminComponent,
         DialogComponent,
-        ValidDeletionDialogComponent
+        ValidDeletionDialogComponent,
+        LoginComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        MatIconModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatMenuModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatSelectModule,
-        MatExpansionModule,
-        MatProgressBarModule,
-        MatTabsModule,
-        MatDialogModule,
-        MatProgressSpinnerModule,
-        MatChipsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-        LoaderComponent], providers: [
+    AppRoutingModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    LoaderComponent, NgOptimizedImage], providers: [
         CookieService,
         provideNativeDateAdapter(),
         DatePipe,

@@ -1,0 +1,16 @@
+{
+  "login": {
+    "title": "Log in to the customer area",
+    "placeholder": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "button": {
+      "login": "Log in",
+      "googleLogin": "Log in with Google"
+    },
+    "labels" : {
+      "goToRegister": "Don't have an account? Sign up here!"
+    }
+  }
+}

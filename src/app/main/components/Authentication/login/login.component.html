@@ -1,0 +1,29 @@
+<div class="login-container">
+  <img class="login-logo" ngSrc="assets/IMG/locngo_removbg.png" alt="logo" height="125" width="365">
+  <p class="login-title">{{translateValues.title}}</p>
+  <form [formGroup]="loginForm">
+    <div class="custom-input-container">
+      <div>
+        <label *ngIf="loginForm.get('email')?.valid" for="email">{{translateValues?.placeholder?.email}}</label>
+        <input id="email" type="email" formControlName="email" placeholder="{{translateValues?.placeholder?.email}}" class="custom-input">
+      </div>
+      <div>
+        <label *ngIf="loginForm.get('password')?.valid" for="password">{{translateValues?.placeholder?.password}}</label>
+        <input id="password" type="password" formControlName="password" placeholder="{{translateValues?.placeholder?.password}}" class="custom-input">
+      </div>
+    </div>
+
+    <div class="login-buttons-container">
+      <button class="login-button" type="submit" [disabled]="loginForm.invalid">
+        {{ translateValues?.button?.login }}
+      </button>
+      <button class="login-button google-login" type="submit" [disabled]="loginForm.invalid">
+        <span style="align-content: center; justify-content: center">
+          <img ngSrc="assets/svg/google.svg" alt="google login" height="25" width="25">
+          {{ translateValues?.button?.googleLogin }}
+        </span>
+      </button>
+      <p class="login-register-redirect" routerLink="/register">{{ translateValues?.labels?.goToRegister }}</p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+{
+  "login": {
+    "title": "Se connecter à l'espace voyageurs",
+    "placeholder": {
+      "email": "Email",
+      "password": "Mot de passe"
+    },
+    "button": {
+      "login": "Se connecter",
+      "googleLogin": "Se connecter avec Google"
+    },
+    "labels" : {
+      "goToRegister": "Vous n'avez pas encore de compte? Inscrivez-vous!"
+    }
+  }
+}
