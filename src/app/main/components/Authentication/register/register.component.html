@@ -1,0 +1,84 @@
+<div class="register-container">
+  <img class="register-logo" src="assets/IMG/locngo_removbg.png" alt="logo">
+  <p class="login-title">{{translateValues.title}}</p>
+  <p class="register-subtitle">{{translateValues.subtitle}}</p>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <div>
+        <button mat-button (click)="previous()" [disabled]="isFirstIndex()"
+                [ngStyle]="isFirstIndex() ? {color: 'transparent'} : {color: 'var(--secondary-color)'}">
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+      </div>
+      <mat-tab-group id="tab-group" fitInkBarToContent headerPosition="below"
+                     (selectedIndexChange)="setCurrentIndex($event)" [(selectedIndex)]="selectedTab">
+        <mat-tab label="1/3">
+          <div class="mat-tab-register">
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('firstname')?.valid ? 'label-active' : 'label-inactive'" for="firstname">{{translateValues?.placeholder?.firstname}}</label>
+              <input id="firstname" type="text" formControlName="firstname"
+                     placeholder="{{translateValues?.placeholder?.firstname}}" class="custom-input"
+              >
+            </div>
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('lastname')?.valid ? 'label-active' : 'label-inactive'" for="lastname">{{translateValues?.placeholder?.lastname}}</label>
+              <input id="lastname" type="text" formControlName="lastname" placeholder="{{translateValues?.placeholder?.lastname}}" class="custom-input">
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="{{ isFirstPartValid() ? '2/3' : ''}}" [disabled]="!isFirstPartValid()">
+          <div class="mat-tab-register">
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('email')?.valid ? 'label-active' : 'label-inactive'" for="email">{{translateValues?.placeholder?.email}}</label>
+              <input id="email" type="email" formControlName="email"
+                     placeholder="{{translateValues?.placeholder?.email}}" class="custom-input"
+              >
+            </div>
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('phone')?.valid ? 'label-active' : 'label-inactive'" for="phone">{{translateValues?.placeholder?.phone}}</label>
+              <input id="phone" type="tel" formControlName="phone" placeholder="{{translateValues?.placeholder?.phone}}" class="custom-input">
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="{{ isSecondPartValid() ? '3/3' : ''}}" [disabled]="!isSecondPartValid()">
+          <div class="mat-tab-register">
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('password')?.valid ? 'label-active' : 'label-inactive'" for="password">{{translateValues?.placeholder?.password}}</label>
+              <input id="password" type="password" formControlName="password"
+                     placeholder="{{translateValues?.placeholder?.password}}" class="custom-input"
+                     (focusout)="checkPassWordConditions(registerForm.get('password')?.value)"
+              >
+            </div>
+            <div class="custom-input-group">
+              <label [ngClass]="registerForm.get('confirmPassword')?.valid ? 'label-active' : 'label-inactive'" for="confirmPassword">{{translateValues?.placeholder?.confirmPassword}}</label>
+              <input id="confirmPassword" type="password" formControlName="confirmPassword"
+                     placeholder="{{translateValues?.placeholder?.confirmPassword}}" class="custom-input"
+                     (focusout)="checkPassWordConditions(registerForm.get('confirmPassword')?.value)"
+              >
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div>
+        <button mat-button (click)="next()" [disabled]="nextButtonDisabled()"
+                [ngStyle]="nextButtonDisabled() ? {color: 'transparent'} : {color: 'var(--secondary-color)'}">
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="register-buttons-container">
+      <button class="login-button" type="submit" [hidden]="registerForm.invalid"
+              [disabled]="registerForm.invalid">
+        {{ translateValues?.button?.register }}
+      </button>
+      <button class="login-button google-login" type="button" [disabled]="registerForm.invalid">
+        <span style="align-content: center; justify-content: center">
+          <img ngSrc="assets/svg/google.svg" alt="google login" height="25" width="25">
+          {{ translateValues?.button?.googleRegister }}
+        </span>
+      </button>
+      <p class="login-register-redirect" routerLink="/login">{{ translateValues?.labels?.goToLogin }}</p>
+    </div>
+  </form>
+</div>

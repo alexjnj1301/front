@@ -7,7 +7,7 @@ import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title: string = 'ChezToph'
+  public title: string = 'Loc\'Ngo'
   public selectedLanguage: string
   public translateValues: any = {}
   public isLoading: boolean = false

@@ -8,7 +8,7 @@ import { BookRequest, BookResponse } from 'src/app/models/ContactInformations';
   providedIn: 'root'
 })
 export class HttpCallsService {
-  private baseUrl: string = "http://127.0.0.1:8000/api"
+  private baseUrl: string = "http://127.0.0.1:8080/api"
   constructor(private http: HttpClient) {}
 
   public getAllReservations(): Observable<BookResponse[]> {

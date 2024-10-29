@@ -1,7 +1,7 @@
 <div class="login-container">
   <img class="login-logo" src="assets/IMG/locngo_removbg.png" alt="logo">
   <p class="login-title">{{translateValues.title}}</p>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="custom-input-container">
       <div>
         <label [ngClass]="loginForm.get('email')?.valid ? 'label-active' : 'label-inactive'" for="email">{{translateValues?.placeholder?.email}}</label>
@@ -17,7 +17,7 @@
       <button class="login-button" type="submit" [disabled]="loginForm.invalid">
         {{ translateValues?.button?.login }}
       </button>
-      <button class="login-button google-login" type="submit" [disabled]="loginForm.invalid">
+      <button class="login-button google-login" type="button" [disabled]="loginForm.invalid">
         <span style="align-content: center; justify-content: center">
           <img ngSrc="assets/svg/google.svg" alt="google login" height="25" width="25">
           {{ translateValues?.button?.googleLogin }}

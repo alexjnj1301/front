@@ -1,11 +1,11 @@
 export interface BookRequest {
-  nom: string
-  prenom: string
-  dateDebut: string
-  dateFin: string
-  nbPersonnes: number
+  name: string
+  firstname: string
+  start_date: string
+  end_date: string
+  nb_person: number
   email: string
-  telephone: string
+  phone: string
   prix: number
   attendees: Attendee[]
 }
