@@ -14,12 +14,8 @@ export class HomePageComponent implements OnInit {
               public appComponent: AppComponent) { }
 
   public ngOnInit(): void {
-    this.appComponent.setIsLoading(true)
     this.translateValues.getTranslation().subscribe((result) => {
       this.homePageTranslateValues = result.homePage;
     })
-    setTimeout(() => {
-      this.appComponent.setIsLoading(false)
-    }, 1000)
   }
 }

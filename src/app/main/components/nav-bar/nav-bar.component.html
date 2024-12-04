@@ -1,5 +1,8 @@
-<mat-toolbar class="toolBar" *ngIf="!isActiveRouteLogin()">
-  <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}"><img class="logo" src="../../../../assets/IMG/logo4.png" alt="Loc'nGo's logo"/>ChezToph</div>
+<mat-toolbar class="toolBar" *ngIf="!isActiveRouteAuthentication()">
+  <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}">
+    <img class="logo" src="./assets/IMG/icon_locngo.png" alt="Loc'nGo's logo"/>
+    {{translateValues.title}}
+  </div>
   <div class="links">
     <a class="link" href="" routerLink="/home" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.home}}"><strong>{{translateValues.links?.home}}</strong></a>
     <a class="link" href="" routerLink="/contact" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.contact}}"><strong>{{translateValues.links?.contact}}</strong></a>

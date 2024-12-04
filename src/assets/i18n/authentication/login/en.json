@@ -12,5 +12,24 @@
     "labels" : {
       "goToRegister": "Don't have an account? Sign up here!"
     }
+  },
+  "register": {
+    "title": "Register to the customer area",
+    "subtitle": "Please fill in the following fields to register",
+    "placeholder": {
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "firstname": "Firstname",
+      "lastname": "Name",
+      "phone": "Phone"
+    },
+    "button": {
+      "register": "Register",
+      "googleRegister": "Register with Google"
+    },
+    "labels" : {
+      "goToLogin": "Already have an account? Log in here!"
+    }
   }
 }

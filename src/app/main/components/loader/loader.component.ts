@@ -7,8 +7,6 @@ import { MatCard } from "@angular/material/card"
   selector: 'app-loader',
   standalone: true,
   imports: [
-    MatProgressSpinner,
-    MatProgressBar,
     MatCard
   ],
   templateUrl: './loader.component.html',

@@ -7,12 +7,13 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 :root{
   --primary-color: #e7f3fd;
   --secondary-color: rgb(5, 68, 126);
   --tertiary-color: rgb(3,15,32);
+  --quadri-color: #666666;
   --form-color: #f8fcff;
   --white: #fff;
   --black: #000;

@@ -168,16 +168,17 @@ export class BookFormComponent implements OnInit {
     this.appComponent.setIsLoading(true)
     if (this.bookForm.valid) {
       this.bookRequest = {
-        nom: this.bookForm.get('lastName')?.value,
-        prenom: this.bookForm.get('firstName')?.value,
-        dateDebut: this.startDate || '',
-        dateFin: this.endDate || '',
-        nbPersonnes: this.nbAttendees,
+        name: this.bookForm.get('lastName')?.value,
+        firstname: this.bookForm.get('firstName')?.value,
+        start_date: this.startDate || '',
+        end_date: this.endDate || '',
+        nb_person: this.nbAttendees,
         email: this.bookForm.get('email')?.value,
-        telephone: this.bookForm.get('phone')?.value,
+        phone: this.bookForm.get('phone')?.value,
         prix: 0,
         attendees: this.attendeesFormArray.value
       }
+      console.log(this.bookRequest);
       this.httpService.postBookRequest(this.bookRequest).subscribe({
         next: () => {
           this.isLoading = false
