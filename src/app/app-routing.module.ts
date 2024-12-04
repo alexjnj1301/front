@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'error/:errorKey', component: ErrorPageComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: 'error/404', pathMatch: 'full' }

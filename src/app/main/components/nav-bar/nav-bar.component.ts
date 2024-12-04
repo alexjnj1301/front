@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
 import { Router } from '@angular/router'
+import { AuthenticationService } from '../../services/authentication.service'
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +14,8 @@ export class NavBarComponent implements OnInit {
   currentLangDisplay: string
 
   public constructor(private translateService: MultipleTransLoaderHttp,
-                     public router: Router) {
+                     public router: Router,
+                     private authService: AuthenticationService) {
     this.currentLangDisplay = this.translateService.getLang();
   }
 
@@ -30,5 +32,13 @@ export class NavBarComponent implements OnInit {
 
   public isActiveRouteAuthentication(): boolean {
     return this.router.url === '/login' || this.router.url === '/register';
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  public logout(): void {
+    this.authService.logout();
   }
 }
