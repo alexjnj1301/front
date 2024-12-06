@@ -25,6 +25,11 @@
   --canceled-or-rejected: #fd8989;
   --accepted: rgb(126, 195, 141);
   --pending: #ffbb8e;
+  @include mat.menu-overrides((
+    container-color: var(--primary-color),
+    item-label-text-color: var(--secondary-color),
+    item-icon-color: var(--secondary-color)
+  ));
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {

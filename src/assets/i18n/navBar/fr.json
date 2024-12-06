@@ -4,9 +4,10 @@
     "links": {
       "home": "Accueil",
       "about": "A propos de l'apartement",
-      "contact": "Contact et réservation",
+      "contact": "Contact",
+      "booking": "mes reservations",
       "login": "Se connecter",
-      "logout": "Se déconnecter"
+      "logout": "déconnexion"
     },
     "tooltips": {
       "home": "Retour à l'accueil",

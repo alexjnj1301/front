@@ -1,5 +1,5 @@
 .toolBar {
-  background-color: var(--tertiary-color);
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,6 +10,7 @@
   z-index: 1000;
   height: auto;
   width: 100vw;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .logo {
@@ -22,15 +23,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   gap: 0.5rem;
 }
 .logoDiv:hover {
   cursor: pointer;
-  background-color: var(--navBar-hover-color);
+  background-color: white;
   padding-right: 0.5rem;
   transition: 100ms;
   border-radius: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .links {
@@ -41,39 +43,23 @@
 }
 
 .link {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-decoration: none;
   margin: 0 0.5rem;
   font-size: 1rem;
 }
 .link:hover {
   cursor: pointer;
-  background-color: var(--navBar-hover-color);
-  padding: 0 0.2rem;
+  background-color: white;
+  padding: 0 0.5rem;
   transition: 100ms;
   border-radius: 5rem;
-  scale: 1.1;
-}
-
-.shareButton {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: none;
-  margin: 0 1rem 0 0.5rem;
-  cursor: pointer;
-  padding: 0;
-}
-.shareButton:hover {
-  padding: 0.1rem;
-  transition: 100ms;
-  border-radius: 5rem;
-  background-color: var(--navBar-hover-color);
-  scale: 1.1;
+  //scale: 1.1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .langSelector {
-  border-left: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  border-left: 1px solid var(--secondary-color);
   align-items: center;
 }
 
@@ -84,14 +70,21 @@
   margin-left: 1rem;
   cursor: pointer;
   padding: 0;
+  color: var(--secondary-color);
 }
 
 .active-link {
-  background-color: var(--navBar-hover-color);
-  padding: 0 0.2rem;
+  background-color: white;
+  padding: 0 0.5rem;
   border-radius: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 mat-icon {
   margin: 1rem;
+}
+
+.test:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
 }

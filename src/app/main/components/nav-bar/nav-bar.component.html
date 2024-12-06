@@ -7,9 +7,24 @@
     <div class="links">
       <a class="link" href="" routerLink="/home" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.home}}"><strong>{{translateValues.links?.home}}</strong></a>
       <a class="link" href="" routerLink="/contact" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.contact}}"><strong>{{translateValues.links?.contact}}</strong></a>
-      <a class="link" (click)="logout()">{{translateValues.links?.logout}}</a>
+      <!-- profile menu -->
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User profile menu">
+        <mat-icon style="margin: 0; color: var(--secondary-color)">perm_identity</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>calendar_today</mat-icon>
+          <span class="test">{{translateValues.links?.booking}}</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon fontIcon="logout"></mat-icon>
+          <span class="test">{{translateValues.links?.logout}}</span>
+        </button>
+      </mat-menu>
+      <!-- profile menu -->
+
       <div class="langSelector">
-        <button style="color: var(--primary-color);" class="langSelectorButton"
+        <button class="langSelectorButton"
                 [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">
           {{currentLangDisplay.toUpperCase()}}
         </button>

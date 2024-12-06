@@ -4,9 +4,10 @@
     "links": {
       "home": "Home",
       "about": "About the apartment",
-      "contact": "Contact and booking",
+      "contact": "Contact",
+      "booking": "my bookings",
       "login": "Log in",
-      "logout": "Log out"
+      "logout": "log out"
     },
     "tooltips": {
       "home": "Go to the home page",
