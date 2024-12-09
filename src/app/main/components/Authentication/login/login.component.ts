@@ -37,10 +37,9 @@ export class LoginComponent implements OnInit {
    this.appComponent.setIsLoading(true)
     this.authenticationService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        console.log(response)
         this.appComponent.setIsLoading(false)
         localStorage.setItem(this.constants.TOKEN_KEY, response.token)
-        console.log('expired', this.authenticationService.isTokenExpired(response.token))
+        this.authenticationService.setCurrentUser()
         this.router.navigate(['/home'])
       },
       error: (err) => {

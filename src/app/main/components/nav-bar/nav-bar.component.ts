@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
 import { Router } from '@angular/router'
 import { AuthenticationService } from '../../services/authentication.service'
+import { SidenavService } from '../../services/sidenav.service'
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,8 +15,9 @@ export class NavBarComponent implements OnInit {
   currentLangDisplay: string
 
   public constructor(private translateService: MultipleTransLoaderHttp,
-                     public router: Router,
-                     private authService: AuthenticationService) {
+                     private router: Router,
+                     private authService: AuthenticationService,
+                     protected sidenavService: SidenavService) {
     this.currentLangDisplay = this.translateService.getLang();
   }
 
@@ -40,5 +42,9 @@ export class NavBarComponent implements OnInit {
 
   public logout(): void {
     this.authService.logout();
+  }
+
+  public toggleDrawer(): void {
+    this.sidenavService.toggleSidenav();
   }
 }

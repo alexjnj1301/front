@@ -3,9 +3,9 @@ import { environment } from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { LoginRequest, LoginResponse } from '../../models/LoginModels'
-import { Router } from '@angular/router'
 import { Constants } from '../Constants'
 import { jwtDecode } from 'jwt-decode'
+import { CurrentUser } from '../../models/CurrentUser'
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,7 @@ import { jwtDecode } from 'jwt-decode'
 export class AuthenticationService {
   private baseUrl: string = environment.apiUrl + '/auth'
 
-  constructor(private router: Router,
-              private constants: Constants,
+  constructor(private constants: Constants,
               private httpClient: HttpClient) {}
 
   public isAuthenticated(): boolean {
@@ -31,6 +30,9 @@ export class AuthenticationService {
   }
 
   public isTokenExpired(token: string): boolean {
+    if (!token) {
+      return true
+    }
     try {
       const decoded = jwtDecode(token)
       const currentTime = Math.floor(Date.now() / 1000)
@@ -41,9 +43,29 @@ export class AuthenticationService {
     }
   }
 
+  public getCurrentUser(): CurrentUser | null {
+    return JSON.parse(localStorage.getItem(this.constants.CURRENT_USER_KEY)!)
+  }
+
+  public setCurrentUser() {
+    const token = this.getToken()
+    if (!token) {
+      return
+    }
+
+    const decoded: any = jwtDecode(token)
+    const currentUser: CurrentUser = {
+      firstname: decoded.firstname,
+      lastname: decoded.lastname,
+      email: decoded.sub
+    }
+
+    localStorage.setItem(this.constants.CURRENT_USER_KEY, JSON.stringify(currentUser))
+  }
+
   public logout(): void {
     localStorage.removeItem(this.constants.TOKEN_KEY)
-    // this.router.navigate(['/login'])
+    localStorage.removeItem(this.constants.CURRENT_USER_KEY)
   }
 
   public login(loginRequest: LoginRequest): Observable<LoginResponse> {

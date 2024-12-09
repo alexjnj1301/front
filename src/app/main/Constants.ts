@@ -5,4 +5,5 @@ import { Injectable } from '@angular/core'
 })
 export class Constants {
   public readonly TOKEN_KEY = 'token'
+  public readonly CURRENT_USER_KEY = 'currentUser'
 }

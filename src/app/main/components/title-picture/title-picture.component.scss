@@ -3,7 +3,11 @@
   height: 200px;
   overflow-x: hidden;
   margin-top: 3rem;
-  width: 100vw;
+  width: 100%;
+}
+
+.test {
+  background-color: red;
 }
 
 .background-image {

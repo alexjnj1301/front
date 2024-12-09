@@ -13,6 +13,16 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.littleScreen {
+  display: none;
+}
+
+.menu_logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .logo {
   height: 3rem;
   max-height: 100%;
@@ -54,8 +64,7 @@
   padding: 0 0.5rem;
   transition: 100ms;
   border-radius: 5rem;
-  //scale: 1.1;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
 }
 
 .langSelector {
@@ -82,4 +91,16 @@
 
 mat-icon {
   margin: 1rem;
+}
+
+@media (max-width: 500px) {
+  .menu-button {
+    display: none;
+  }
+  .bigScreen {
+    display: none;
+  }
+  .littleScreen {
+    display: flex;
+  }
 }

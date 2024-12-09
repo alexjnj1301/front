@@ -1,0 +1,36 @@
+.sidenav-container {
+  display: flex;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.sidenav-content {
+  padding: 4.1rem 20px 20px;
+  background-color: rgb(34, 98, 152);
+  border: 2px solid #05447EFF;
+  color: white;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.mat-drawer-container {
+  width: 100%;
+}
+
+.footer {
+  color: #a9c7da;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0;
+}
+.footer:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.spacer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

@@ -14,7 +14,9 @@
       "about": "Learn more about the apartment",
       "contact": "Contact us and book your stay",
       "share": "Share this page",
-      "lang": "Change language"
+      "lang": "Change language",
+      "openMenu": "Open the menu",
+      "closeMenu": "Close the menu"
     }
   }
 }

@@ -13,7 +13,7 @@
   --primary-color: #e7f3fd;
   --secondary-color: rgb(5, 68, 126);
   --tertiary-color: rgb(3,15,32);
-  --quadri-color: #666666;
+  --quadri-color: #888888;
   --form-color: #f8fcff;
   --white: #fff;
   --black: #000;
@@ -30,6 +30,10 @@
     item-label-text-color: var(--secondary-color),
     item-icon-color: var(--secondary-color)
   ));
+
+  @include mat.sidenav-overrides((
+    content-background-color: var(--primary-color)
+  ))
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {

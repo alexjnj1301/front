@@ -6,7 +6,7 @@
       "about": "A propos de l'apartement",
       "contact": "Contact",
       "booking": "mes reservations",
-      "login": "Se connecter",
+      "login": "connexion",
       "logout": "déconnexion"
     },
     "tooltips": {
@@ -14,7 +14,9 @@
       "about": "En savoir plus sur l'appartement",
       "contact": "Contactez-nous pour réserver",
       "share": "Partager",
-      "lang": "Changer de langue"
+      "lang": "Changer de langue",
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu"
     }
   }
 }

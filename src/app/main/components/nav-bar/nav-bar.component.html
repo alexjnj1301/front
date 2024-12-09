@@ -1,7 +1,16 @@
-<mat-toolbar class="toolBar" *ngIf="!isActiveRouteAuthentication()">
-  <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}">
-    <img class="logo" src="./assets/IMG/icon_locngo.png" alt="Loc'nGo's logo"/>
-    {{translateValues.title}}
+<mat-toolbar class="toolBar bigScreen" *ngIf="!isActiveRouteAuthentication()">
+  <div class="menu_logo">
+    <button class="menu-button" mat-icon-button (click)="toggleDrawer()">
+      @if (sidenavService.isSidenavOpened()) {
+        <mat-icon style="margin: 0; color: var(--secondary-color)" matTooltip="{{translateValues.tooltips?.closeMenu}}">close</mat-icon>
+      } @else {
+        <mat-icon style="margin: 0; color: var(--secondary-color)" matTooltip="{{translateValues.tooltips?.openMenu}}">menu</mat-icon>
+      }
+    </button>
+    <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}">
+      <img class="logo" src="./assets/IMG/icon_locngo.png" alt="Loc'nGo's logo"/>
+      {{translateValues.title}}
+    </div>
   </div>
 
   <div class="links">
@@ -48,4 +57,38 @@
       </div>
     </div>
   }
+</mat-toolbar>
+<mat-toolbar class="toolBar littleScreen" *ngIf="!isActiveRouteAuthentication()">
+  <div class="logoDiv" routerLink="/home" matTooltip="{{translateValues.tooltips?.home}}">
+    <img class="logo" src="./assets/IMG/icon_locngo.png" alt="Loc'nGo's logo"/>
+    {{translateValues.title}}
+  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User profile menu">
+    <mat-icon style="margin: 0; color: var(--secondary-color)">menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/home">
+      <mat-icon>home</mat-icon>
+      <span style="text-transform: lowercase">{{translateValues.links?.home}}</span>
+    </button>
+    <button mat-menu-item routerLink="/contact">
+      <mat-icon>contact_support</mat-icon>
+      <span style="text-transform: lowercase">{{translateValues.links?.contact}}</span>
+    </button>
+    @if (isLoggedIn()) {
+      <button mat-menu-item>
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{translateValues.links?.booking}}</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon fontIcon="logout"></mat-icon>
+        <span>{{translateValues.links?.logout}}</span>
+      </button>
+    } @else {
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>login</mat-icon>
+        <span>{{translateValues.links?.login}}</span>
+      </button>
+    }
+  </mat-menu>
 </mat-toolbar>
