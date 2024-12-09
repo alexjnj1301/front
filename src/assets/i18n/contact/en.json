@@ -1,6 +1,7 @@
 {
   "contact": {
-    "title": "Book your journey or contact us",
+    "title": "Any question ? Need information ?",
+    "contactUs": "Contact us !",
     "card": {
       "contactTitle": "Contact form",
       "contactSubtitle": "If you have any questions, please feel free to contact us via the form below.",

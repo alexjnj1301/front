@@ -3,20 +3,49 @@
     <img class="logo" src="./assets/IMG/icon_locngo.png" alt="Loc'nGo's logo"/>
     {{translateValues.title}}
   </div>
+
   <div class="links">
     <a class="link" href="" routerLink="/home" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.home}}"><strong>{{translateValues.links?.home}}</strong></a>
     <a class="link" href="" routerLink="/contact" routerLinkActive="active-link" matTooltip="{{translateValues.tooltips?.contact}}"><strong>{{translateValues.links?.contact}}</strong></a>
-    <button class="shareButton">
-      <mat-icon matTooltip="{{translateValues.tooltips?.share}}" style="margin: 0;">launch</mat-icon>
-    </button>
-    <div class="langSelector">
-      <button style="color: var(--primary-color);" class="langSelectorButton"
-        [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">
-        {{currentLangDisplay.toUpperCase()}}
-      </button>
-      <mat-menu #selector="matMenu">
-        <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang.toUpperCase()}}</button>
-      </mat-menu>
-    </div>
   </div>
+  @if (isLoggedIn()) {
+    <div class="links">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User profile menu">
+        <mat-icon style="margin: 0; color: var(--secondary-color)">perm_identity</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>calendar_today</mat-icon>
+          <span>{{translateValues.links?.booking}}</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon fontIcon="logout"></mat-icon>
+          <span>{{translateValues.links?.logout}}</span>
+        </button>
+      </mat-menu>
+
+      <div class="langSelector">
+        <button class="langSelectorButton"
+                [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">
+          {{currentLangDisplay.toUpperCase()}}
+        </button>
+        <mat-menu #selector="matMenu">
+          <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang.toUpperCase()}}</button>
+        </mat-menu>
+      </div>
+    </div>
+  } @else {
+    <div class="links">
+      <a class="link" href="/login">{{translateValues.links?.login}}</a>
+      <div class="langSelector">
+        <button class="langSelectorButton"
+                [matMenuTriggerFor]="selector" matTooltip="{{translateValues.tooltips?.lang}}">
+          {{currentLangDisplay.toUpperCase()}}
+        </button>
+        <mat-menu #selector="matMenu">
+          <button mat-menu-item *ngFor="let lang of langSelector" (click)="changeLang(lang)">{{lang.toUpperCase()}}</button>
+        </mat-menu>
+      </div>
+    </div>
+  }
 </mat-toolbar>

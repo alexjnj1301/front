@@ -1,9 +1,2 @@
-<app-title-picture title={{contactTranslateValues.title}}></app-title-picture>
-<mat-tab-group>
-  <mat-tab label="{{contactTranslateValues.card?.bookTitle}}">
-    <app-book-form [translateValues]="contactTranslateValues"></app-book-form>
-  </mat-tab>
-  <mat-tab label="{{contactTranslateValues.card?.contactTitle}}">
-    <app-contact-form [translateValues]="contactTranslateValues"></app-contact-form>
-  </mat-tab>
-</mat-tab-group>
+<app-title-picture title="{{contactTranslateValues.title}}<br>{{contactTranslateValues.contactUs}}"></app-title-picture>
+<app-contact-form [translateValues]="contactTranslateValues"></app-contact-form>

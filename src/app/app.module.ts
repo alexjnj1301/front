@@ -7,7 +7,7 @@ import { ContactComponent } from './main/components/contact/contact.component'
 import { ErrorPageComponent } from './main/components/error-page/error-page.component'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { MultipleTransLoaderHttp } from './MultipleTransLoaderHttp'
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
 import { NavBarComponent } from './main/components/nav-bar/nav-bar.component'
 import { MatIconModule } from '@angular/material/icon'
@@ -41,6 +41,7 @@ import { LoaderComponent } from "./main/components/loader/loader.component"
 import {LoginComponent} from "./main/components/Authentication/login/login.component";
 import { RegisterComponent } from './main/components/Authentication/register/register.component'
 import { MatDivider } from '@angular/material/divider'
+import { AuthInterceptor } from './main/services/auth.interceptor'
 export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
   return new MultipleTransLoaderHttp(http, cookieService);
 }
@@ -60,7 +61,8 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
         LoginComponent,
         RegisterComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [BrowserModule,
         AppRoutingModule,
         MatIconModule,
         MatButtonModule,
@@ -89,6 +91,7 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
             },
         }),
         LoaderComponent, NgOptimizedImage, MatDivider], providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         CookieService,
         provideNativeDateAdapter(),
         DatePipe,
@@ -99,5 +102,6 @@ export function createTranslateLoader(http: HttpClient, cookieService: CookieSer
             useFactory: (cookieService: CookieService) => cookieService.get('lang') || 'fr'
         },
         provideHttpClient(withInterceptorsFromDi())
-    ] })
+    ]
+})
 export class AppModule {}

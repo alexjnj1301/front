@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MultipleTransLoaderHttp } from '../../../../MultipleTransLoaderHttp'
 import { AuthenticationService } from '../../../services/authentication.service'
 import { AppComponent } from '../../../../app.component'
+import { Constants } from '../../../Constants'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -10,14 +12,15 @@ import { AppComponent } from '../../../../app.component'
   styleUrl: '../authentication.styles.scss'
 })
 export class LoginComponent implements OnInit {
-  public isLoading = false
   public loginForm: FormGroup
   translateValues: any = {}
 
   constructor(private formBuilder: FormBuilder,
               private translateService: MultipleTransLoaderHttp,
               private authenticationService: AuthenticationService,
-              private appComponent: AppComponent) {
+              private appComponent: AppComponent,
+              private constants: Constants,
+              private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -36,6 +39,9 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         console.log(response)
         this.appComponent.setIsLoading(false)
+        localStorage.setItem(this.constants.TOKEN_KEY, response.token)
+        console.log('expired', this.authenticationService.isTokenExpired(response.token))
+        this.router.navigate(['/home'])
       },
       error: (err) => {
         console.log('Error:', err)
