@@ -1,6 +1,7 @@
 {
   "contact": {
-    "title": "Réservez votre séjour ou contactez nous",
+    "title": "Une question ? Besoin d'une information ?",
+    "contactUs": "Contactez-nous !",
     "card": {
       "contactTitle": "Formulaire de contact",
       "contactSubtitle": "Pour toute question ou demande d'information, n'hésitez pas à nous contacter via ce formulaire.",
