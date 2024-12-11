@@ -14,7 +14,7 @@
   --secondary-color: rgb(5, 68, 126);
   --tertiary-color: rgb(3,15,32);
   --quadri-color: #888888;
-  --form-color: #f8fcff;
+  --form-color: #e0efff;
   --white: #fff;
   --black: #000;
   --image-filter: rgba(28, 32, 34, 0.207);
@@ -33,7 +33,11 @@
 
   @include mat.sidenav-overrides((
     content-background-color: var(--primary-color)
-  ))
+  ));
+
+  @include mat.divider-overrides((
+    color: var(--primary-color)
+  ));
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
@@ -58,4 +62,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mdc-dialog__surface {
   border-radius: 15px !important;
   width: 30rem !important;
+}
+
+.reservation-card .mat-mdc-card-header-text {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.panel-reservations .mat-expansion-panel-body {
+  padding: 0 10px 16px !important;
 }

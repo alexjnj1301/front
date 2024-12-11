@@ -2,6 +2,9 @@
   "sidenav": {
     "logout": "Déconnexion",
     "welcomeGuest": "Bonjour !",
-    "welcomeUser": "Bonjour {{firstname}} {{lastname}} !"
+    "welcomeUser": "Bonjour {{firstname}} {{lastname}} !",
+    "myReservations": "Mes réservations",
+    "reservationCardTitle": "Du {{startDate}} au {{endDate}}",
+    "reservationCardSubtitle": "Ref: {{reference}}"
   }
 }

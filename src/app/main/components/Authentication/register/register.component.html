@@ -43,14 +43,14 @@
         <mat-tab label="{{ isSecondPartValid() ? '3/3' : ''}}" [disabled]="!isSecondPartValid()">
           <div class="mat-tab-register">
             <div class="custom-input-group">
-              <label [ngClass]="registerForm.get('password')?.valid ? 'label-active' : 'label-inactive'" for="password">{{translateValues?.placeholder?.password}}</label>
+              <label [ngClass]="registerForm.get('password')?.value ? 'label-active' : 'label-inactive'" for="password">{{translateValues?.placeholder?.password}}</label>
               <input id="password" type="password" formControlName="password"
                      placeholder="{{translateValues?.placeholder?.password}}" class="custom-input"
                      (focusout)="checkPassWordConditions(registerForm.get('password')?.value)"
               >
             </div>
             <div class="custom-input-group">
-              <label [ngClass]="registerForm.get('confirmPassword')?.valid ? 'label-active' : 'label-inactive'" for="confirmPassword">{{translateValues?.placeholder?.confirmPassword}}</label>
+              <label [ngClass]="registerForm.get('confirmPassword')?.value ? 'label-active' : 'label-inactive'" for="confirmPassword">{{translateValues?.placeholder?.confirmPassword}}</label>
               <input id="confirmPassword" type="password" formControlName="confirmPassword"
                      placeholder="{{translateValues?.placeholder?.confirmPassword}}" class="custom-input"
                      (focusout)="checkPassWordConditions(registerForm.get('confirmPassword')?.value)"

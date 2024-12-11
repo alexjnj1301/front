@@ -2,18 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UpdateBookRequest } from 'src/app/enums/admin';
-import { BookRequest, BookResponse } from 'src/app/models/ContactInformations';
+import { BookRequest } from 'src/app/models/ContactInformations';
 import { environment } from '../../../environments/environment'
+import { AllReservationsByUserId, Reservation } from '../../models/ReservationPerUser'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpCallsService {
-  private baseUrl: string = environment.apiUrl
+  private baseUrl: string = environment.apiUrl + '/api'
   constructor(private http: HttpClient) {}
 
-  public getAllReservations(): Observable<BookResponse[]> {
-    return this.http.get<BookResponse[]>(`${this.baseUrl}/reservations`);
+  public getAllReservationsByUserId(userId: number): Observable<AllReservationsByUserId[]> {
+    return this.http.get<AllReservationsByUserId[]>(`${this.baseUrl}/reservations/user/${userId}`);
   }
 
   public postBookRequest(bookRequest: BookRequest): Observable<any> {

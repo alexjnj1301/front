@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
 })
 export class SidenavService {
   private toggleSidenavSubject = new Subject<void>()
-  private isSidenavOpen: boolean
+  private isSidenavOpen: boolean = false
 
   public toggleSidenav$ = this.toggleSidenavSubject.asObservable()
 

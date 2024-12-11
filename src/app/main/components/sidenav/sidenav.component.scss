@@ -1,31 +1,30 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.expansion-overrides((
+    header-indicator-color: var(--primary-color),
+    header-text-color: var(--primary-color)
+  ));
+}
+
 .sidenav-container {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   min-width: 100%;
+  overflow-y: clip;
 }
 
 .sidenav-content {
   padding: 4.1rem 20px 20px;
-  background-color: rgb(34, 98, 152);
-  border: 2px solid #05447EFF;
+  background-color: rgba(169, 199, 218, 0.4);
   color: white;
   border-radius: 0 1rem 1rem 0;
+  min-width: 10%;
+  backdrop-filter: blur(20px);
 }
 
 .mat-drawer-container {
   width: 100%;
-}
-
-.footer {
-  color: #a9c7da;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0;
-}
-.footer:hover {
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .spacer {
@@ -33,4 +32,30 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+.welcome-title {
+  text-align: center;
+}
+
+.logout-icon:hover {
+  cursor: pointer;
+}
+
+.sidenav-title {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.panel-reservations {
+  backdrop-filter: blur();
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+
+.reservations-list-container {
+  height: 70vh;
+  overflow-y: scroll;
 }
