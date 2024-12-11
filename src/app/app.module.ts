@@ -42,8 +42,9 @@ import {LoginComponent} from "./main/components/Authentication/login/login.compo
 import { RegisterComponent } from './main/components/Authentication/register/register.component'
 import { MatDivider } from '@angular/material/divider'
 import { AuthInterceptor } from './main/services/auth.interceptor'
-export function createTranslateLoader(http: HttpClient, cookieService: CookieService) {
-  return new MultipleTransLoaderHttp(http, cookieService);
+
+export function createTranslateLoader(http: HttpClient) {
+  return new MultipleTransLoaderHttp(http)
 }
 
 @NgModule({ declarations: [

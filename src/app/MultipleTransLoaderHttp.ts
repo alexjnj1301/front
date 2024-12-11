@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { TranslateLoader } from "@ngx-translate/core";
-import { Observable, forkJoin } from "rxjs";
+import { forkJoin, Observable } from "rxjs";
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,12 +9,11 @@ import { map } from 'rxjs/operators';
 })
 
 export class MultipleTransLoaderHttp implements TranslateLoader {
-  private defaultLang: string = "fr";
-  private currentLang: string = this.getLang();
+  private defaultLang: string = "fr"
+  private currentLang: string = this.getLang()
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
   ) {}
 
   getTranslation(): Observable<any> {
@@ -28,16 +26,16 @@ export class MultipleTransLoaderHttp implements TranslateLoader {
       this.http.get(`./assets/i18n/authentication/login/${this.currentLang}.json`),
     ]).pipe(
       map((translations) => {
-        return Object.assign({}, ...translations);
+        return Object.assign({}, ...translations)
       })
-    );
+    )
   }
 
   setLang(lang: string): void {
-    this.cookieService.set('lang', lang, undefined, '/');
+    localStorage.setItem('lang', lang)
   }
 
   getLang(): string {
-    return this.cookieService.get('lang') || this.defaultLang;
+    return localStorage.getItem('lang') || this.defaultLang
   }
 }

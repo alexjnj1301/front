@@ -1,0 +1,7 @@
+{
+  "sidenav": {
+    "logout": "Logout",
+    "welcomeGuest": "Welcome !",
+    "welcomeUser": "Welcome {{firstname}} {{lastname}} !"
+  }
+}
