@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
 import { MultipleTransLoaderHttp } from '../../../../MultipleTransLoaderHttp'
+import { AppComponent } from '../../../../app.component'
+import { AuthenticationService } from '../../../services/authentication.service'
+import { Constants } from '../../../Constants'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-register',
@@ -13,7 +17,11 @@ export class RegisterComponent implements OnInit {
   public selectedTab: number = 0;
 
   constructor(private formBuilder: FormBuilder,
-              private translateService: MultipleTransLoaderHttp) {
+              private translateService: MultipleTransLoaderHttp,
+              private authenticationService: AuthenticationService,
+              private constants: Constants,
+              private appComponent: AppComponent,
+              private router: Router) {
     this.registerForm = this.formBuilder.group(
       {
         email: ['', [Validators.required]],
@@ -45,6 +53,20 @@ export class RegisterComponent implements OnInit {
 
   public register(): void {
     console.log(this.registerForm.value)
+    this.appComponent.setIsLoading(true)
+    this.authenticationService.register(this.registerForm.value).subscribe({
+      next: (response) => {
+        this.appComponent.setIsLoading(false)
+        localStorage.setItem(this.constants.TOKEN_KEY, response.token)
+        this.authenticationService.setCurrentUser()
+        this.router.navigate(['/home'])
+        console.log('Success:', response)
+      },
+      error: (err) => {
+        console.log('Error:', err)
+        this.appComponent.setIsLoading(false)
+      }
+    })
   }
 
   public isFirstPartValid(): boolean {
