@@ -45,6 +45,8 @@ import { SidenavComponent } from './main/components/sidenav/sidenav.component'
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav'
 import { ReservationCardComponent } from './main/components/sidenav/reservation-card/reservation-card.component'
 import { MatDivider } from '@angular/material/divider'
+import { LieuCardComponent } from './main/components/home-page/lieu-card/lieu-card.component'
+import { LieuDetailsComponent } from './main/components/lieu-details/lieu-details.component'
 
 export function createTranslateLoader(http: HttpClient) {
   return new MultipleTransLoaderHttp(http)
@@ -65,7 +67,9 @@ export function createTranslateLoader(http: HttpClient) {
         LoginComponent,
         RegisterComponent,
         SidenavComponent,
-        ReservationCardComponent
+        ReservationCardComponent,
+        LieuCardComponent,
+        LieuDetailsComponent
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,

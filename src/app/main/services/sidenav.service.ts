@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router'
+import { AuthenticationService } from './authentication.service'
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class SidenavService {
 
   public toggleSidenav$ = this.toggleSidenavSubject.asObservable()
 
-  public constructor(private router: Router) {
+  public constructor(private router: Router,
+                     private authenticationService: AuthenticationService) {
     this.isSidenavOpen = this.hasToBeOpened()
   }
 
@@ -29,6 +31,6 @@ export class SidenavService {
   }
 
   public hasToBeOpened(): boolean {
-    return !this.isActiveRouteAuthentication()
+    return !this.isActiveRouteAuthentication() && this.authenticationService.isAuthenticated()
   }
 }
