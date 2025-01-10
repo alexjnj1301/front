@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
 import { AuthenticationService } from '../../services/authentication.service'
 import { Constants } from '../../Constants'
+import { AllLieuResponse } from '../../../models/LieuModels'
+import { HttpCallsService } from '../../services/httpCalls.service'
 
 @Component({
   selector: 'app-home-page',
@@ -9,19 +11,24 @@ import { Constants } from '../../Constants'
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  public homePageTranslateValues: any = {}
+  public listLieux: AllLieuResponse[] = []
 
-  constructor(private translateValues: MultipleTransLoaderHttp,
-              private authenticationService: AuthenticationService,
+  constructor(private authenticationService: AuthenticationService,
+              private httpCallsService: HttpCallsService,
               private constants: Constants) { }
 
   public ngOnInit(): void {
-    this.translateValues.getTranslation().subscribe((result) => {
-      this.homePageTranslateValues = result.homePage;
-    })
+    this.getAllLieu()
   }
 
-  public test(): void {
-    console.log('expired', this.authenticationService.isTokenExpired(localStorage.getItem(this.constants.TOKEN_KEY)!))
+  private getAllLieu() {
+    this.httpCallsService.getAllLieu().subscribe({
+      next: (response) => {
+        this.listLieux = response
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    })
   }
 }

@@ -1,4 +1,8 @@
-<app-title-picture title={{homePageTranslateValues.title}}></app-title-picture>
+<app-title-picture title="{{'homePage.title' | translate }}"></app-title-picture>
 <div>
-  <button mat-raised-button color="primary" (click)="test()">verifier token wola</button>
+  <div class="lieu-cards-container">
+    @for (lieu of listLieux; track lieu.id) {
+        <app-lieu-card [lieu]="lieu"></app-lieu-card>
+    }
+  </div>
 </div>

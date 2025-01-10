@@ -8,5 +8,4 @@ import { AllReservationsByUserId, Reservation } from '../../../../models/Reserva
 })
 export class ReservationCardComponent {
   @Input() reservation!: AllReservationsByUserId
-
 }

@@ -1,5 +1,8 @@
 {
   "homePage": {
-    "title": "Bienvenue sur Loc'nGo"
+    "title": "Bienvenue sur Loc'nGo",
+    "lieuxCards": {
+      "seeDetails": "Voir les détails"
+    }
   }
 }

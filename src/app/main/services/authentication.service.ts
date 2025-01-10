@@ -6,6 +6,8 @@ import { LoginRequest, LoginResponse } from '../../models/LoginModels'
 import { Constants } from '../Constants'
 import { jwtDecode } from 'jwt-decode'
 import { CurrentUser } from '../../models/CurrentUser'
+import { RegisterRequest, RegisterResponse } from '../../models/RegisterModels'
+
 
 @Injectable({
   providedIn: 'root'
@@ -88,5 +90,14 @@ export class AuthenticationService {
         this.setCurrentUser()
       })
     )
+  }
+
+  public register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
+    return this.httpClient.post<RegisterResponse>(`${this.baseUrl}/register`, registerRequest).pipe(
+      tap((response: RegisterResponse) => {
+        localStorage.setItem(this.constants.TOKEN_KEY, response.token)
+        this.setCurrentUser()
+      }
+    ))
   }
 }
