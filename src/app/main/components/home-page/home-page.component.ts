@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MultipleTransLoaderHttp } from 'src/app/MultipleTransLoaderHttp';
 import { AuthenticationService } from '../../services/authentication.service'
 import { Constants } from '../../Constants'
 import { AllLieuResponse } from '../../../models/LieuModels'
@@ -13,9 +12,7 @@ import { HttpCallsService } from '../../services/httpCalls.service'
 export class HomePageComponent implements OnInit {
   public listLieux: AllLieuResponse[] = []
 
-  constructor(private authenticationService: AuthenticationService,
-              private httpCallsService: HttpCallsService,
-              private constants: Constants) { }
+  constructor(private httpCallsService: HttpCallsService) { }
 
   public ngOnInit(): void {
     this.getAllLieu()

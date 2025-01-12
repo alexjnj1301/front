@@ -4,5 +4,5 @@ export interface AllLieuResponse {
   address: string
   city: string
   postal_code: string
-  image: string
+  favorite_picture: string
 }
