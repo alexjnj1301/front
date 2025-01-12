@@ -1,0 +1,10 @@
+{
+  "lieuDetails": {
+    "reservation": {
+      "title": "Vous souhaitez réserver un séjour ici ?",
+      "buttons": {
+        "book": "Réserver"
+      }
+    }
+  }
+}

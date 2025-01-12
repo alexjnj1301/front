@@ -1,1 +1,98 @@
-<div class="lieu-details-container">bonjour {{lieuId}}</div>
+<div class="lieu-details-container">
+  <div class="lieu-details-pictures-showroom">
+    <mat-grid-list cols="4">
+      @for (tile of tiles; track tile) {
+        <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows" class="tiles" [ngClass]="tile.class"
+        >
+          @if (tile.class === 'bottom-right-right') {
+            Voir plus
+          } @else {
+            <mat-progress-spinner *ngIf="!isImageLoaded" mode="indeterminate"></mat-progress-spinner>
+
+            <img *ngIf="tile.img || constants.REPLACEMENT_PICTURE" src="{{tile.img ? tile.img : constants.REPLACEMENT_PICTURE }}" alt="No more image to show"
+                 (load)="onImageLoad()"
+                 (error)="onImageLoad()">
+          }
+        </mat-grid-tile>
+      }
+    </mat-grid-list>
+  </div>
+  <div class="lieu-details-reservation">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <h3>{{ 'lieuDetails.reservation.title' | translate }}</h3>
+
+      <div class="lieu-details-reservation-dates">
+        <div [hidden]="true">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
+              <input matStartDate formControlName="startDate" placeholder="Start date" (dateChange)="onStartDateChange()">
+              <input matEndDate formControlName="endDate" placeholder="End date" (dateChange)="onEndDateChange()">
+            </mat-date-range-input>
+
+            @if (bookForm.get('startDate')?.hasError('matStartDateInvalid')) {
+              <mat-error>Invalid start date</mat-error>
+            }
+            @if (bookForm.get('endDate')?.hasError('matEndDateInvalid')) {
+              <mat-error>Invalid end date</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="lieu-details-reservation-journey-container">
+          <div class="lieu-details-reservation-journey-date-container">
+            <button mat-flat-button type="button" (click)="picker.open()" style="border-radius: 8px 0 0 8px">{{ startDate | date: "dd-MM-yyyy" }}</button>
+            <button mat-flat-button type="button" (click)="bookForm.reset(); bookForm.get('startDate')?.setValue(this.startDateOui); picker.open()" style="border-radius: 0 8px 8px 0">{{ endDate | date: "dd-MM-yyyy" }}</button>
+          </div>
+          <div>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon>people</mat-icon>
+                    <span>{{ 'lieuDetails.reservation.labels.attendees' | translate }}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="lieu-details-reservation-attendees">
+                  <div class="lieu-details-reservation-attendees-title">
+                    <h4>{{ 'lieuDetails.reservation.labels.attendees' | translate }}</h4>
+                  </div>
+                  <div class="lieu-details-reservation-attendees-list">
+                    <ul>
+                      <li *ngFor="let attendee of 'attendees'; let i = index">
+                        <mat-form-field>
+                          <input matInput placeholder="{{ 'lieuDetails.reservation.labels.attendee' | translate }} {{ i + 1 }}" formControlName="attendees">
+                        </mat-form-field>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <mat-date-range-picker #picker (closed)="onClose()"></mat-date-range-picker>
+      </div>
+      <button mat-button type="submit" color="primary">{{ 'lieuDetails.reservation.buttons.book' | translate }}</button>
+    </form>
+  </div>
+</div>
+<div>
+  <div class="lieu-details-infos">
+    <div class="lieu-details-infos-title">
+      <h1>{{lieuDetails?.name}}</h1>
+    </div>
+    <div class="lieu-details-infos-description">
+      <p>{{lieuDetails?.description}}</p>
+    </div>
+    <div class="lieu-details-infos-features">
+      <div class="lieu-details-infos-features-title">
+        <h2>Caractéristiques</h2>
+      </div>
+      <div class="lieu-details-infos-features-list">
+        <ul>
+          <li *ngFor="let feature of lieuDetails?.services">{{feature}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

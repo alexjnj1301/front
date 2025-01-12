@@ -72,3 +72,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .panel-reservations .mat-expansion-panel-body {
   padding: 0 10px 16px !important;
 }
+
+.cdk-overlay-connected-position-bounding-box{
+  .cdk-overlay-pane {
+    top: 300px !important;
+    left: 150px !important;
+  }
+}
